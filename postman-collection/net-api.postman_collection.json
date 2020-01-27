@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "14d750ea-7145-4feb-a386-d65af4c1c374",
+		"_postman_id": "9abdf087-6750-4301-ace6-aaf11d940626",
 		"name": "net-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1930,6 +1930,131 @@
 			"protocolProfileBehavior": {}
 		},
 		{
+			"name": "docs",
+			"item": [
+				{
+					"name": "GET docs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "appkey",
+								"type": "text",
+								"value": "123"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "sessionid",
+								"type": "text",
+								"value": "{{sessionId}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{address}}:{{port}}/v1/docs",
+							"protocol": "http",
+							"host": [
+								"{{address}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"docs"
+							]
+						},
+						"description": "Retrieves a list of Documents contained in Document Folder"
+					},
+					"response": []
+				},
+				{
+					"name": "GET incidentTree",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "appkey",
+								"type": "text",
+								"value": "123"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "sessionid",
+								"type": "text",
+								"value": "{{sessionId}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{address}}:{{port}}/v1/incidentTree/:oid",
+							"protocol": "http",
+							"host": [
+								"{{address}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"incidentTree",
+								":oid"
+							],
+							"variable": [
+								{
+									"key": "oid",
+									"value": ""
+								}
+							]
+						},
+						"description": "Gets a incident tree (for the project/incident) from DOCUframe. Setted deepLevel queryParameter determines the level of the process tree."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "POST Login",
 			"event": [
 				{
@@ -1980,125 +2105,6 @@
 						"login"
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET docs",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "appkey",
-						"type": "text",
-						"value": "123"
-					},
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "sessionid",
-						"type": "text",
-						"value": "{{sessionId}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://{{address}}:{{port}}/v1/docs",
-					"protocol": "http",
-					"host": [
-						"{{address}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"v1",
-						"docs"
-					]
-				},
-				"description": "Retrieves a list of Documents contained in Document Folder"
-			},
-			"response": []
-		},
-		{
-			"name": "GET incidentTree",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "appkey",
-						"type": "text",
-						"value": "123"
-					},
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "sessionid",
-						"type": "text",
-						"value": "{{sessionId}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://{{address}}:{{port}}/v1/incidentTree/:oid",
-					"protocol": "http",
-					"host": [
-						"{{address}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"v1",
-						"incidentTree",
-						":oid"
-					],
-					"variable": [
-						{
-							"key": "oid",
-							"value": ""
-						}
-					]
-				},
-				"description": "Gets a incident tree (for the project/incident) from DOCUframe. Setted deepLevel queryParameter determines the level of the process tree."
 			},
 			"response": []
 		},
