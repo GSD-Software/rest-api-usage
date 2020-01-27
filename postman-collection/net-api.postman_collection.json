@@ -44,7 +44,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"~ClassName\": \"Kunde\",\r\n  \"~ObjectID\": \"OID12\",\r\n  \"Name1\": \"Bob1\",\r\n  \"Name2\": \"Marley\"\r\n}"
+							"raw": "{\r\n  \"~ClassName\": \"Kunde\",\r\n  \"Name1\": \"Bob1\",\r\n  \"Name2\": \"Marley\",\r\n  \"Nummer\": \"{{$guid}}\"\r\n}"
 						},
 						"url": {
 							"raw": "http://{{address}}:{{port}}/v1/object/:className",
@@ -57,18 +57,6 @@
 								"v1",
 								"object",
 								":className"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							],
 							"variable": [
 								{
@@ -128,16 +116,6 @@
 							],
 							"query": [
 								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								},
-								{
 									"key": "serialization",
 									"value": "{ \"type\": \"docs\", \"getSize\": true }",
 									"description": "More information about serialization type on https://docs.gsd.pl/restapi/serialization/serialization/"
@@ -151,6 +129,66 @@
 							]
 						},
 						"description": "Return object for specific oid."
+					},
+					"response": []
+				},
+				{
+					"name": "POST setObjectSecurity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "appkey",
+								"type": "text",
+								"value": "123"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "sessionid",
+								"type": "text",
+								"value": "{{sessionId}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"security\":[\n\t\t{\n\t\t\t\"userObjectName\":\"jeder\",\n\t\t\t\"rights\":0\n\t\t},\n\t\t{\n\t\t\t\"userObjectName\":\"gsdadmin\",\n\t\t\t\"rights\":7\n\t\t}\n\t\t,\n\t\t{\n\t\t\t\"userObjectName\":\"gsdwebservice\",\n\t\t\t\"rights\":1023\n\t\t\t\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://{{address}}:{{port}}/v1/setObjectSecurity/:objectOid",
+							"protocol": "http",
+							"host": [
+								"{{address}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"setObjectSecurity",
+								":objectOid"
+							],
+							"variable": [
+								{
+									"key": "objectOid",
+									"value": "{{objectOid}}"
+								}
+							]
+						},
+						"description": "Sets security rights for object."
 					},
 					"response": []
 				},
@@ -206,18 +244,6 @@
 								"object",
 								":objectOid",
 								":objectField"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							],
 							"variable": [
 								{
@@ -283,18 +309,6 @@
 								"object",
 								":objectOid"
 							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
 							"variable": [
 								{
 									"key": "objectOid",
@@ -354,18 +368,6 @@
 								"v1",
 								"object",
 								":objectOid"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							],
 							"variable": [
 								{
@@ -436,18 +438,6 @@
 								"objects",
 								":className"
 							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
 							"variable": [
 								{
 									"key": "className",
@@ -508,18 +498,6 @@
 								"objects",
 								":className"
 							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
 							"variable": [
 								{
 									"key": "className",
@@ -579,18 +557,6 @@
 								"v1",
 								"objects",
 								":className"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							],
 							"variable": [
 								{
@@ -661,18 +627,6 @@
 								"file",
 								":fileOid"
 							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
 							"variable": [
 								{
 									"key": "fileOid",
@@ -734,18 +688,6 @@
 							"path": [
 								"v1",
 								"uploadFile"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							]
 						},
 						"description": "Gets the uploadId used to handle the upload."
@@ -753,7 +695,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT uploadFIle",
+					"name": "POST uploadFile {uploadId}",
 					"event": [
 						{
 							"listen": "test",
@@ -767,7 +709,7 @@
 						}
 					],
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [
 							{
 								"key": "appkey",
@@ -776,8 +718,9 @@
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
 							},
 							{
 								"key": "sessionid",
@@ -786,11 +729,17 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"actions\":{\"type\":\"join\"},\r\n\t\"files\": \"{{uploadId}}\"\r\n}\r\n"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": []
+								}
+							]
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid",
+							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:uploadId",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -799,28 +748,16 @@
 							"path": [
 								"v1",
 								"uploadFile",
-								":fileOid"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
+								":uploadId"
 							],
 							"variable": [
 								{
-									"key": "fileOid",
-									"value": ""
+									"key": "uploadId",
+									"value": "{{uploadId}}"
 								}
 							]
 						},
-						"description": "Joins previously uploaded images to one file"
+						"description": "Upload file in DF."
 					},
 					"response": []
 				},
@@ -838,9 +775,6 @@
 							}
 						}
 					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -860,16 +794,6 @@
 								"value": "{{sessionId}}"
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
 						"url": {
 							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:uploadID",
 							"protocol": "http",
@@ -881,18 +805,6 @@
 								"v1",
 								"uploadFile",
 								":uploadID"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							],
 							"variable": [
 								{
@@ -943,7 +855,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid?replaceOID=",
+							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:uploadId",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -952,28 +864,12 @@
 							"path": [
 								"v1",
 								"uploadFile",
-								":fileOid"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								},
-								{
-									"key": "replaceOID",
-									"value": ""
-								}
+								":uploadId"
 							],
 							"variable": [
 								{
-									"key": "fileOid",
-									"value": ""
+									"key": "uploadId",
+									"value": "{{uploadId}}"
 								}
 							]
 						},
@@ -1014,19 +910,8 @@
 								"value": "{{sessionId}}"
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "",
-									"type": "file",
-									"src": [],
-									"disabled": true
-								}
-							]
-						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid",
+							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:uploadId",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1035,107 +920,16 @@
 							"path": [
 								"v1",
 								"uploadFile",
-								":fileOid"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
+								":uploadId"
 							],
 							"variable": [
 								{
-									"key": "fileOid",
-									"value": ""
+									"key": "uploadId",
+									"value": "{{uploadId}}"
 								}
 							]
 						},
 						"description": "Deleted file from server. This does not work while file is being uploaded. It does not acts as upload cancelation."
-					},
-					"response": []
-				},
-				{
-					"name": "POST uploadFile {uploadId}",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "",
-									"type": "file",
-									"src": [],
-									"disabled": true
-								}
-							]
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"uploadFile",
-								":fileOid"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
-							"variable": [
-								{
-									"key": "fileOid",
-									"value": ""
-								}
-							]
-						},
-						"description": "Upload file in DF."
 					},
 					"response": []
 				}
@@ -1196,18 +990,6 @@
 								"v1",
 								"model",
 								"structure"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							]
 						},
 						"description": "Model of class / classes. If the classes queryParameter is empty the whole class structure is returned."
@@ -1255,7 +1037,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/model/dict",
+							"raw": "http://{{address}}:{{port}}/v1/model/dict?dict=EMail.Status",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1268,14 +1050,8 @@
 							],
 							"query": [
 								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
+									"key": "dict",
+									"value": "EMail.Status"
 								}
 							]
 						},
@@ -1324,7 +1100,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/model/ml",
+							"raw": "http://{{address}}:{{port}}/v1/model/ml?ml=EMail.Status",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1337,14 +1113,8 @@
 							],
 							"query": [
 								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
+									"key": "ml",
+									"value": "EMail.Status"
 								}
 							]
 						},
@@ -1409,18 +1179,6 @@
 								"v1",
 								"extModel",
 								"structure"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							]
 						},
 						"description": "Model of class / classes. If the classes queryParameter is empty the whole class structure is returned. With setted baseClasses queryParameter class structure will be returned with only base classes. With setted skipMembers queryParameter class structure will be returned without members."
@@ -1468,7 +1226,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/extModel/dict",
+							"raw": "http://{{address}}:{{port}}/v1/extModel/dict?dict=EMail.Status",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1481,14 +1239,8 @@
 							],
 							"query": [
 								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
+									"key": "dict",
+									"value": "EMail.Status"
 								}
 							]
 						},
@@ -1537,7 +1289,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/extModel/ml",
+							"raw": "http://{{address}}:{{port}}/v1/extModel/ml?ml=EMail.Status",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1550,14 +1302,8 @@
 							],
 							"query": [
 								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
+									"key": "ml",
+									"value": "EMail.Status"
 								}
 							]
 						},
@@ -1624,22 +1370,10 @@
 								"object",
 								":className"
 							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
 							"variable": [
 								{
 									"key": "className",
-									"value": ""
+									"value": "Kunde"
 								}
 							]
 						},
@@ -1700,188 +1434,14 @@
 								"objects",
 								":className"
 							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
 							"variable": [
 								{
 									"key": "className",
-									"value": ""
+									"value": "Kunde"
 								}
 							]
 						},
 						"description": "Gets a JSON Schema for class objects"
-					},
-					"response": []
-				},
-				{
-					"name": "GET templateObject jsonSchema",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/jsonSchema/templateObject/:templateClass/:templateId",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"jsonSchema",
-								"templateObject",
-								":templateClass",
-								":templateId"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
-							"variable": [
-								{
-									"key": "templateClass",
-									"value": ""
-								},
-								{
-									"key": "templateId",
-									"value": ""
-								}
-							]
-						},
-						"description": "Gets a JSON Schema for object serialised with a template"
-					},
-					"response": []
-				},
-				{
-					"name": "GET templateObjects jsonSchema",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/jsonSchema/templateObjects/:templateClass/:templateId",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"jsonSchema",
-								"templateObjects",
-								":templateClass",
-								":templateId"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
-							"variable": [
-								{
-									"key": "templateClass",
-									"value": ""
-								},
-								{
-									"key": "templateId",
-									"value": ""
-								}
-							]
-						},
-						"description": "Gets a JSON Schema for objectset serialised with a template"
 					},
 					"response": []
 				}
@@ -1926,7 +1486,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"toUsers\": [\"user1\", \"user2\"],\r\n\t\"text\": \"test message\"\r\n}\r\n"
+							"raw": "{\r\n\t\"toUsers\": [\"gsdadmin\", \"gsdwebservice\"],\r\n\t\"text\": \"test message\"\r\n}\r\n"
 						},
 						"url": {
 							"raw": "http://{{address}}:{{port}}/v1/message",
@@ -1938,18 +1498,6 @@
 							"path": [
 								"v1",
 								"message"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							]
 						},
 						"description": "This request allowes to create and send a messages."
@@ -2006,18 +1554,6 @@
 							"path": [
 								"v1",
 								"messages"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							]
 						},
 						"description": "Retrieves a list of users messages from the incoming folder. If there is no serialization passed it will use message's custom serialization."
@@ -2030,6 +1566,63 @@
 		{
 			"name": "conversation",
 			"item": [
+				{
+					"name": "GET conversations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
+								"exec": [
+									"var json = JSON.parse(responseBody);",
+									"pm.globals.set(\"conversationOid\", json.data[\"~Elements\"][0][\"~ObjectID\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "appkey",
+								"type": "text",
+								"value": "123"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "sessionid",
+								"type": "text",
+								"value": "{{sessionId}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{address}}:{{port}}/v1/conversations",
+							"protocol": "http",
+							"host": [
+								"{{address}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"conversations"
+							]
+						},
+						"description": "Retrieves a list of conversations that are in an incoming folder of a current user. If there is no serialization passed it will use conversation's custom serialization."
+					},
+					"response": []
+				},
 				{
 					"name": "GET conversation",
 					"event": [
@@ -2082,295 +1675,14 @@
 								"conversation",
 								":conversationOid"
 							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
 							"variable": [
 								{
 									"key": "conversationOid",
-									"value": ""
+									"value": "{{conversationOid}}"
 								}
 							]
 						},
 						"description": "Retrieves a list of all messages from a conversation. The OID in the URL is an OID of a message from a conversation. If there is no serialization passed it will use conversation's custom serialization."
-					},
-					"response": []
-				},
-				{
-					"name": "GET conversations",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/conversations",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"conversations"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							]
-						},
-						"description": "Retrieves a list of conversations that are in an incoming folder of a current user. If there is no serialization passed it will use conversation's custom serialization."
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "password",
-			"item": [
-				{
-					"name": "POST changePassword",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"oldPassword\":\"oldPassword\",\n\t\"newPassword\":\"newPassword\",\n\t\"user\":\"userName\"\n}"
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/changePassword",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"changePassword"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							]
-						},
-						"description": "Allows to change the web password. After the change, the user will be logged out."
-					},
-					"response": []
-				},
-				{
-					"name": "POST resetPassword",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"user\": \"userName\"\n}"
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/resetPassword",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"resetPassword"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							]
-						},
-						"description": "Allows to reset web password of the external DF user"
-					},
-					"response": []
-				},
-				{
-					"name": "POST confirmResetPassword",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n\t\"user\": \"userName\" , \r\n\t\"resetPasswordToken\":\"resetPassToken\",\r\n\t\"newPassword\":\"newPassword\"\r\n}"
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/confirmResetPassword",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"confirmResetPassword"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							]
-						},
-						"description": "Allows to confirm reset web password process"
 					},
 					"response": []
 				}
@@ -2380,155 +1692,6 @@
 		{
 			"name": "execute",
 			"item": [
-				{
-					"name": "POST executeTemplate",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/executeTemplate/:template/:templateID",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"executeTemplate",
-								":template",
-								":templateID"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
-							"variable": [
-								{
-									"key": "template",
-									"value": ""
-								},
-								{
-									"key": "templateID",
-									"value": ""
-								}
-							]
-						},
-						"description": "Executes a Template"
-					},
-					"response": []
-				},
-				{
-					"name": "POST action",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/action/:className",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"action",
-								":className"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
-							"variable": [
-								{
-									"key": "className",
-									"value": ""
-								}
-							]
-						},
-						"description": "Executes actions on objects found in query."
-					},
-					"response": []
-				},
 				{
 					"name": "POST Execute macro",
 					"event": [
@@ -2562,10 +1725,6 @@
 								"value": "{{sessionId}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"input\": \"myInput\"\n}\n"
-						},
 						"url": {
 							"raw": "http://{{address}}:{{port}}/v1/execute/:macroNameToExecute",
 							"protocol": "http",
@@ -2578,22 +1737,10 @@
 								"execute",
 								":macroNameToExecute"
 							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
-							],
 							"variable": [
 								{
 									"key": "macroNameToExecute",
-									"value": ""
+									"value": "xRestApi_GetSystemInformation"
 								}
 							]
 						},
@@ -2657,18 +1804,6 @@
 							"path": [
 								"v1",
 								"versionInfo"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							]
 						},
 						"description": "Return info about version of GSD-RestApi module, webservice, DOCUframe, license ID and key and list of additional modules"
@@ -2730,18 +1865,6 @@
 							"port": "{{port}}",
 							"path": [
 								"_CheckService"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							]
 						},
 						"description": "Return informations about service."
@@ -2797,18 +1920,6 @@
 							"port": "{{port}}",
 							"path": [
 								"_CheckSession"
-							],
-							"query": [
-								{
-									"key": "appkeys",
-									"value": "123",
-									"disabled": true
-								},
-								{
-									"key": "content-type",
-									"value": "aplication/json",
-									"disabled": true
-								}
 							]
 						},
 						"description": "Return session informations"
@@ -2867,18 +1978,6 @@
 					"path": [
 						"v1",
 						"login"
-					],
-					"query": [
-						{
-							"key": "appkeys",
-							"value": "123",
-							"disabled": true
-						},
-						{
-							"key": "content-type",
-							"value": "aplication/json",
-							"disabled": true
-						}
 					]
 				}
 			},
@@ -2934,18 +2033,6 @@
 					"path": [
 						"v1",
 						"docs"
-					],
-					"query": [
-						{
-							"key": "appkeys",
-							"value": "123",
-							"disabled": true
-						},
-						{
-							"key": "content-type",
-							"value": "aplication/json",
-							"disabled": true
-						}
 					]
 				},
 				"description": "Retrieves a list of Documents contained in Document Folder"
@@ -3004,18 +2091,6 @@
 						"incidentTree",
 						":oid"
 					],
-					"query": [
-						{
-							"key": "appkeys",
-							"value": "123",
-							"disabled": true
-						},
-						{
-							"key": "content-type",
-							"value": "aplication/json",
-							"disabled": true
-						}
-					],
 					"variable": [
 						{
 							"key": "oid",
@@ -3024,78 +2099,6 @@
 					]
 				},
 				"description": "Gets a incident tree (for the project/incident) from DOCUframe. Setted deepLevel queryParameter determines the level of the process tree."
-			},
-			"response": []
-		},
-		{
-			"name": "POST setObjectSecurity",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "appkey",
-						"type": "text",
-						"value": "123"
-					},
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "sessionid",
-						"type": "text",
-						"value": "{{sessionId}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"security\":[\n\t\t{\n\t\t\t\"userObjectName\":\"userObjectName\",\n\t\t\t\"rights\":15\n\t\t},\n\t\t{\n\t\t\t\"userObjectName\":\"userObjectName\",\n\t\t\t\"rights\":7\n\t\t}\n\t\t,\n\t\t{\n\t\t\t\"userObjectName\":\"userObjectName\",\n\t\t\t\"rights\":0\n\t\t\t\n\t\t}\n\t]\n}"
-				},
-				"url": {
-					"raw": "http://{{address}}:{{port}}/v1/setObjectSecurity/:objectOid",
-					"protocol": "http",
-					"host": [
-						"{{address}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"v1",
-						"setObjectSecurity",
-						":objectOid"
-					],
-					"query": [
-						{
-							"key": "appkeys",
-							"value": "123",
-							"disabled": true
-						},
-						{
-							"key": "content-type",
-							"value": "aplication/json",
-							"disabled": true
-						}
-					],
-					"variable": [
-						{
-							"key": "objectOid",
-							"value": ""
-						}
-					]
-				},
-				"description": "Sets security rights for object."
 			},
 			"response": []
 		},
@@ -3134,18 +2137,6 @@
 					"path": [
 						"v1",
 						"logout"
-					],
-					"query": [
-						{
-							"key": "appkeys",
-							"value": "123",
-							"disabled": true
-						},
-						{
-							"key": "content-type",
-							"value": "aplication/json",
-							"disabled": true
-						}
 					]
 				}
 			},
