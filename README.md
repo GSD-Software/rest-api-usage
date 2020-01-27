@@ -13,7 +13,7 @@ For the correct configuration of all necessary elements we provide configuration
 ## Official documentation
 More Info you can find under: [REST API Documentation](https://docs.gsd.pl/restapi/api/api/)
 
-To read more about Documentation visit our [Docs Site:](https://docs.gsd.pl/).
+To read more about Documentation visit our [Docs Site: docs.gsd.pl](https://docs.gsd.pl/).
 
 To learn about our products and services, visit our Website [www.gsd.pl](https://gsd.pl/).
 
