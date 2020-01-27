@@ -206,9 +206,6 @@
 							}
 						}
 					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -228,10 +225,6 @@
 								"value": "{{sessionId}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"~ClassName\": \"Kunde\",\r\n  \"~ObjectID\": \"OID123\",\r\n  \"~StoreTime\": \"20170710T020000+02:00\",\r\n  \"Name1\": \"Bob\",\r\n  \"Name2\": \"Marley\"\r\n}"
-						},
 						"url": {
 							"raw": "http://{{address}}:{{port}}/v1/object/:objectOid/:objectField",
 							"protocol": "http",
@@ -252,7 +245,7 @@
 								},
 								{
 									"key": "objectField",
-									"value": ""
+									"value": "Lesebenutzergruppen"
 								}
 							]
 						},
@@ -446,126 +439,6 @@
 							]
 						},
 						"description": "Return objects for specific class."
-					},
-					"response": []
-				},
-				{
-					"name": "PATCH objects",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/objects/:className",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"objects",
-								":className"
-							],
-							"variable": [
-								{
-									"key": "className",
-									"value": ""
-								}
-							]
-						},
-						"description": "Modifies objects of a given class."
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE objects",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "appkey",
-								"type": "text",
-								"value": "123"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "sessionid",
-								"type": "text",
-								"value": "{{sessionId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/objects/:className",
-							"protocol": "http",
-							"host": [
-								"{{address}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"v1",
-								"objects",
-								":className"
-							],
-							"variable": [
-								{
-									"key": "className",
-									"value": ""
-								}
-							]
-						},
-						"description": "Modifies objects of a given class."
 					},
 					"response": []
 				}
@@ -1744,7 +1617,7 @@
 								}
 							]
 						},
-						"description": "Request to execute interface macro from DocuFrame."
+						"description": "Request to execute interface macro from Docuframe."
 					},
 					"response": []
 				}
