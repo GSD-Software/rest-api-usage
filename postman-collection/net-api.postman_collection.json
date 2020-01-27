@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "8efc28f9-8766-4226-8b98-3a5e0bb99828",
-		"name": "net-api copy",
+		"_postman_id": "14d750ea-7145-4feb-a386-d65af4c1c374",
+		"name": "net-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -16,7 +16,8 @@
 							"script": {
 								"id": "392c898f-d89d-4d03-9e8f-9e1c9205b205",
 								"exec": [
-									""
+									"var json = JSON.parse(responseBody);",
+									"pm.globals.set(\"objectOid\", json.data[\"~ObjectID\"]);"
 								],
 								"type": "text/javascript"
 							}
@@ -43,10 +44,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"~ClassName\": \"Kunde\",\r\n  \"~ObjectID\": \"OID123\",\r\n  \"Name1\": \"Bob\",\r\n  \"Name2\": \"Marley\"\r\n}"
+							"raw": "{\r\n  \"~ClassName\": \"Kunde\",\r\n  \"~ObjectID\": \"OID12\",\r\n  \"Name1\": \"Bob1\",\r\n  \"Name2\": \"Marley\"\r\n}"
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/object/:className?",
+							"raw": "http://{{address}}:{{port}}/v1/object/:className",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -72,7 +73,7 @@
 							"variable": [
 								{
 									"key": "className",
-									"value": ""
+									"value": "Kunde"
 								}
 							]
 						},
@@ -145,7 +146,7 @@
 							"variable": [
 								{
 									"key": "objectOid",
-									"value": ""
+									"value": "{{objectOid}}"
 								}
 							]
 						},
@@ -194,7 +195,7 @@
 							"raw": "{\r\n  \"~ClassName\": \"Kunde\",\r\n  \"~ObjectID\": \"OID123\",\r\n  \"~StoreTime\": \"20170710T020000+02:00\",\r\n  \"Name1\": \"Bob\",\r\n  \"Name2\": \"Marley\"\r\n}"
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/object/:objectOid/:objectField?",
+							"raw": "http://{{address}}:{{port}}/v1/object/:objectOid/:objectField",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -221,7 +222,7 @@
 							"variable": [
 								{
 									"key": "objectOid",
-									"value": ""
+									"value": "{{objectOid}}"
 								},
 								{
 									"key": "objectField",
@@ -271,7 +272,7 @@
 							"raw": "{\r\n  \"~StoreTime\": \"20200123T113142+01:00\",\r\n  \"Name1\": \"Bob2\",\r\n  \"Name2\": \"Marley2\"\r\n}"
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/object/:objectOid?",
+							"raw": "http://{{address}}:{{port}}/v1/object/:objectOid",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -297,7 +298,7 @@
 							"variable": [
 								{
 									"key": "objectOid",
-									"value": ""
+									"value": "{{objectOid}}"
 								}
 							]
 						},
@@ -343,7 +344,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/object/:objectOid?",
+							"raw": "http://{{address}}:{{port}}/v1/object/:objectOid",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -369,7 +370,7 @@
 							"variable": [
 								{
 									"key": "objectOid",
-									"value": "1B3T0"
+									"value": "{{objectOid}}"
 								}
 							]
 						},
@@ -424,7 +425,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/objects/:className?",
+							"raw": "http://{{address}}:{{port}}/v1/objects/:className",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -496,7 +497,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/objects/:className?",
+							"raw": "http://{{address}}:{{port}}/v1/objects/:className",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -568,7 +569,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/objects/:className?",
+							"raw": "http://{{address}}:{{port}}/v1/objects/:className",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -649,7 +650,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/file/:fileOid?",
+							"raw": "http://{{address}}:{{port}}/v1/file/:fileOid",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -724,7 +725,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/uploadFile?",
+							"raw": "http://{{address}}:{{port}}/v1/uploadFile",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -789,7 +790,7 @@
 							"raw": "{\r\n\t\"actions\":{\"type\":\"join\"},\r\n\t\"files\": \"{{uploadId}}\"\r\n}\r\n"
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid?",
+							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -870,7 +871,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:uploadID?",
+							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:uploadID",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -942,7 +943,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid?replaceOID=oid",
+							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid?replaceOID=",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -966,7 +967,7 @@
 								},
 								{
 									"key": "replaceOID",
-									"value": "oid"
+									"value": ""
 								}
 							],
 							"variable": [
@@ -1025,7 +1026,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid?",
+							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1104,7 +1105,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid?",
+							"raw": "http://{{address}}:{{port}}/v1/uploadFile/:fileOid",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1185,7 +1186,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/model/structure?",
+							"raw": "http://{{address}}:{{port}}/v1/model/structure",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1254,7 +1255,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/model/dict?",
+							"raw": "http://{{address}}:{{port}}/v1/model/dict",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1323,7 +1324,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/model/ml?",
+							"raw": "http://{{address}}:{{port}}/v1/model/ml",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1398,7 +1399,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/extModel/structure?",
+							"raw": "http://{{address}}:{{port}}/v1/extModel/structure",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1467,7 +1468,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/extModel/dict?",
+							"raw": "http://{{address}}:{{port}}/v1/extModel/dict",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1536,7 +1537,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/extModel/ml?",
+							"raw": "http://{{address}}:{{port}}/v1/extModel/ml",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1611,7 +1612,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/jsonSchema/object/:className?",
+							"raw": "http://{{address}}:{{port}}/v1/jsonSchema/object/:className",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1687,7 +1688,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/jsonSchema/objects/:className?",
+							"raw": "http://{{address}}:{{port}}/v1/jsonSchema/objects/:className",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1763,7 +1764,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/jsonSchema/templateObject/:templateClass/:templateId?",
+							"raw": "http://{{address}}:{{port}}/v1/jsonSchema/templateObject/:templateClass/:templateId",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1844,7 +1845,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/jsonSchema/templateObjects/:templateClass/:templateId?",
+							"raw": "http://{{address}}:{{port}}/v1/jsonSchema/templateObjects/:templateClass/:templateId",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1928,7 +1929,7 @@
 							"raw": "{\r\n\t\"toUsers\": [\"user1\", \"user2\"],\r\n\t\"text\": \"test message\"\r\n}\r\n"
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/message?",
+							"raw": "http://{{address}}:{{port}}/v1/message",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -1996,7 +1997,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/messages?",
+							"raw": "http://{{address}}:{{port}}/v1/messages",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2070,7 +2071,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/conversation/:conversationOid?",
+							"raw": "http://{{address}}:{{port}}/v1/conversation/:conversationOid",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2096,7 +2097,7 @@
 							"variable": [
 								{
 									"key": "conversationOid",
-									"value": "1AU0L"
+									"value": ""
 								}
 							]
 						},
@@ -2145,7 +2146,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/conversations?",
+							"raw": "http://{{address}}:{{port}}/v1/conversations",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2216,7 +2217,7 @@
 							"raw": "{\n\t\"oldPassword\":\"oldPassword\",\n\t\"newPassword\":\"newPassword\",\n\t\"user\":\"userName\"\n}"
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/changePassword?",
+							"raw": "http://{{address}}:{{port}}/v1/changePassword",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2281,7 +2282,7 @@
 							"raw": "{\n\t\"user\": \"userName\"\n}"
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/resetPassword?",
+							"raw": "http://{{address}}:{{port}}/v1/resetPassword",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2346,7 +2347,7 @@
 							"raw": "{ \r\n\t\"user\": \"userName\" , \r\n\t\"resetPasswordToken\":\"resetPassToken\",\r\n\t\"newPassword\":\"newPassword\"\r\n}"
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/confirmResetPassword?",
+							"raw": "http://{{address}}:{{port}}/v1/confirmResetPassword",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2417,7 +2418,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/executeTemplate/:template/:templateID?",
+							"raw": "http://{{address}}:{{port}}/v1/executeTemplate/:template/:templateID",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2494,7 +2495,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/action/:className?",
+							"raw": "http://{{address}}:{{port}}/v1/action/:className",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2566,7 +2567,7 @@
 							"raw": "{\n\t\"input\": \"myInput\"\n}\n"
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/execute/:macroNameToExecute?",
+							"raw": "http://{{address}}:{{port}}/v1/execute/:macroNameToExecute",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2647,7 +2648,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/v1/versionInfo?",
+							"raw": "http://{{address}}:{{port}}/v1/versionInfo",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2721,7 +2722,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/_CheckService?",
+							"raw": "http://{{address}}:{{port}}/_CheckService",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2788,7 +2789,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{address}}:{{port}}/_CheckSession?",
+							"raw": "http://{{address}}:{{port}}/_CheckSession",
 							"protocol": "http",
 							"host": [
 								"{{address}}"
@@ -2854,10 +2855,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"user\": \"userName\",\n  \"pass\": \"userPassword\",\n  \"appNames\": [\n\t\"appNames\"\n  ]\n}"
+					"raw": "{\n  \"user\": \"{{userName}}\",\n  \"pass\": \"{{userPassword}}\",\n  \"appNames\": [\n\t\t\t\"appName\"\n  ]\n}"
 				},
 				"url": {
-					"raw": "http://{{address}}:{{port}}/v1/login?",
+					"raw": "http://{{address}}:{{port}}/v1/login",
 					"protocol": "http",
 					"host": [
 						"{{address}}"
@@ -2924,7 +2925,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{address}}:{{port}}/v1/docs?",
+					"raw": "http://{{address}}:{{port}}/v1/docs",
 					"protocol": "http",
 					"host": [
 						"{{address}}"
@@ -2992,7 +2993,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{address}}:{{port}}/v1/incidentTree/:oid?",
+					"raw": "http://{{address}}:{{port}}/v1/incidentTree/:oid",
 					"protocol": "http",
 					"host": [
 						"{{address}}"
@@ -3064,7 +3065,7 @@
 					"raw": "{\n\t\"security\":[\n\t\t{\n\t\t\t\"userObjectName\":\"userObjectName\",\n\t\t\t\"rights\":15\n\t\t},\n\t\t{\n\t\t\t\"userObjectName\":\"userObjectName\",\n\t\t\t\"rights\":7\n\t\t}\n\t\t,\n\t\t{\n\t\t\t\"userObjectName\":\"userObjectName\",\n\t\t\t\"rights\":0\n\t\t\t\n\t\t}\n\t]\n}"
 				},
 				"url": {
-					"raw": "http://{{address}}:{{port}}/v1/setObjectSecurity/:objectOid?",
+					"raw": "http://{{address}}:{{port}}/v1/setObjectSecurity/:objectOid",
 					"protocol": "http",
 					"host": [
 						"{{address}}"
@@ -3124,7 +3125,7 @@
 					"raw": "{\n  \"appNames\": \n    \"appNames\"\n}"
 				},
 				"url": {
-					"raw": "http://{{address}}:{{port}}/v1/logout?",
+					"raw": "http://{{address}}:{{port}}/v1/logout",
 					"protocol": "http",
 					"host": [
 						"{{address}}"
