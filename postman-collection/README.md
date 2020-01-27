@@ -11,6 +11,8 @@ To perform a more complex request you can use [jMeter](https://jmeter.apache.org
 All needed information you can find [HERE](https://docs.gsd.pl/restapi/jMeter/jMeter/).
 
 ## Official documentation
-All those calls are very well described in [GSD-Software® Documentation](https://docs.gsd.pl/restapi/api/api/)
+More Info you can find under: [REST API Documentation](https://docs.gsd.pl/restapi/api/api/)
 
-To learn more about GSD-Software products visit [GSD-Software®](https://docs.gsd.pl/).
+To read more about Documentation visit our [docs.gsd.pl](https://docs.gsd.pl/)
+
+To learn about our products and services, visit our Website [www.gsd.pl](https://gsd.pl/)
