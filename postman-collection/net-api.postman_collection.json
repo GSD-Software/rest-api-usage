@@ -2855,7 +2855,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"user\": \"{{userName}}\",\n  \"pass\": \"{{userPassword}}\",\n  \"appNames\": [\n\t\t\t\"appName\"\n  ]\n}"
+					"raw": "{\n  \"user\": \"{{userName}}\",\n  \"pass\": \"{{userPassword}}\",\n  \"appNames\": [\n\t\t\t\"{{appName}}\"\n  ]\n}"
 				},
 				"url": {
 					"raw": "http://{{address}}:{{port}}/v1/login",
@@ -3122,7 +3122,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"appNames\": \n    \"appNames\"\n}"
+					"raw": "{\n  \"appNames\": \n    \"{{appName}}\"\n}"
 				},
 				"url": {
 					"raw": "http://{{address}}:{{port}}/v1/logout",
