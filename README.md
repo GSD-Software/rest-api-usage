@@ -10,6 +10,11 @@ For the correct configuration of all necessary elements we provide configuration
 ## Code examples
 [Here](https://learning.getpostman.com/docs/postman/sending-api-requests/generate-code-snippets/) you will find instructions how to get code examples provide by the postman's environment.
 
+## Official documentation
+More Info you can find under: [REST API Documentation](https://docs.gsd.pl/restapi/api/api/)
 
-## Official
-To learn more about GSD-Software products visit [GSD-Software®](https://gsd-software.com/).
+To read more about Documentation visit our [Docs Site:](https://docs.gsd.pl/).
+
+To learn about our products and services, visit our Website [www.gsd.pl](https://gsd.pl/).
+
+
