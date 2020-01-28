@@ -8,7 +8,7 @@ For the correct configuration of all necessary elements we provide configuration
 [Rest-API configuration](https://dev-docs.gsd.pl/restapi/information/installation/)
 
 ## Code examples
-[Here](https://learning.getpostman.com/docs/postman/sending-api-requests/generate-code-snippets/) you will find instructions how to get code examples provide by the postman's environment.
+[Here](https://learning.getpostman.com/docs/postman/sending-api-requests/generate-code-snippets/) you will find instructions how to get code examples provided by the postman's environment.
 
 ## Official documentation
 More Info you can find under: [REST API Documentation](https://docs.gsd.pl/restapi/api/api/)
